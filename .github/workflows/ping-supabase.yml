@@ -1,0 +1,32 @@
+name: Ping Supabase
+
+on:
+
+  schedule:
+
+    - cron: '0 8 * * 1,3,5'
+
+  workflow_dispatch:
+
+jobs:
+
+  ping:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Ping Supabase
+
+        run: |
+
+          curl -X GET \
+
+            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
+
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}" \
+
+            "https://fkccoxvhwylvqoddfurm.supabase.co/rest/v1/organizations?select=id&limit=1"
+
+            
+
